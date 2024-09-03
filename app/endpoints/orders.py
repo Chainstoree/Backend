@@ -21,8 +21,8 @@ class Checkout(Resource):
                     help="Enter  quantity of product. field can be left blank")
     
     
-    @token_required
-    @jwt_required
+    #@token_required
+    #@jwt_required
     def post(self):
         try:
             data = Checkout.parser.parse_args()

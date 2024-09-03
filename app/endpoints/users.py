@@ -17,7 +17,7 @@ class SigninUser(Resource):
                     type=str,required=True,
                     help="Enter wallet address. field cannot be left blank")
     
-    @token_required
+    #@token_required
     def post(self):
         try:
             data = SigninUser.parser.parse_args()
@@ -94,15 +94,15 @@ api.add_resource(SigninUser, '/api/v1/ecommerce/user/signin')
 #             return {"responseMessage":f"An exception occurred: {e}", "status":False, "responseData":"", "responseCode":"01", "statusCode": 422}, 422
 # api.add_resource(LoginUser, '/api/v1/ecommerce/user/login')
 
-class LogoutUser(Resource):
-    @token_required
-    @jwt_required()
-    def post(self):
-        try:
-            auth = request.headers.get('Authorization').split()[1]
-            jti = get_jti(auth)
-            jwt_blacklist.insert_one({"jti": jti})
-            return {"status": True, "responseMessage": "Logout successful!", "responseData":{}, "responseCode":"00", "statusCode": 200}, 200
-        except Exception as e:
-            return {"responseMessage":f"An exception occurred: {e}", "status":False, "responseData":"", "responseCode":"01", "statusCode": 422}, 422
-api.add_resource(LogoutUser, '/api/v1/ecommerce/user/logout')
+# class LogoutUser(Resource):
+#     @token_required
+#     @jwt_required()
+#     def post(self):
+#         try:
+#             auth = request.headers.get('Authorization').split()[1]
+#             jti = get_jti(auth)
+#             jwt_blacklist.insert_one({"jti": jti})
+#             return {"status": True, "responseMessage": "Logout successful!", "responseData":{}, "responseCode":"00", "statusCode": 200}, 200
+#         except Exception as e:
+#             return {"responseMessage":f"An exception occurred: {e}", "status":False, "responseData":"", "responseCode":"01", "statusCode": 422}, 422
+# api.add_resource(LogoutUser, '/api/v1/ecommerce/user/logout')
