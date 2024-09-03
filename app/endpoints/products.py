@@ -52,14 +52,14 @@ api.add_resource(GetAllProducts, '/api/v1/ecommerce/products/get')
 class GetAProductsDetails(Resource):
     #@token_required
     #@jwt_required
-    def get(self, product_name):
+    def get(self, product_id):
         try:
             
-            product = products.find_one({"product_name":product_name},{"_id":0})
+            product = products.find_one({"product_id":product_id},{"_id":0})
             if not product:
-                return {"status": False, "responseMessage": f"No record for product {product_name}", "responseData":{}, "responseCode":"01", "statusCode": 404}, 404
+                return {"status": False, "responseMessage": f"No record for product {product_id}", "responseData":{}, "responseCode":"01", "statusCode": 404}, 404
             else:
-                return {"status": True, "responseMessage": f"Details for product with Id {product_name} retrieved successfully.", "responseData":product, "responseCode":"00", "statusCode": 200}, 200
+                return {"status": True, "responseMessage": f"Details for product with Id {product_id} retrieved successfully.", "responseData":product, "responseCode":"00", "statusCode": 200}, 200
         except Exception as e:
             return {"message":f"An exception occurred: {e}", "status":False}, 422
-api.add_resource(GetAProductsDetails, '/api/v1/ecommerce/products/detail/<string:product_name>')
+api.add_resource(GetAProductsDetails, '/api/v1/ecommerce/products/detail/<string:product_id>')
