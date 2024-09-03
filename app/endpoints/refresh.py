@@ -5,4 +5,4 @@ from app.utils import *
 def refresh():
     identity = get_jwt_identity()
     access_token = create_access_token(identity=identity)
-    return {"status": True, "responseMessage": "Token refreshed successfully!", "responseData":"", "accessToken":access_token,"statusCode": 200}, 200
+    return {"status": True, "responseMessage": "Token refreshed successfully!", "responseData":{}, "accessToken":access_token,"statusCode": 200}, 200
