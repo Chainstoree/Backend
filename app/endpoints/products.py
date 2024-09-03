@@ -29,7 +29,7 @@ class SearchAProduct(Resource):
                 return {"status": True, "responseMessage": "Search result retrieved successfully.", "Count":len(results), "responseData":results, "responseCode":"00", "statusCode": 200}, 200
         except Exception as e:
             return {"responseMessage":f"An exception occurred: {e}", "status":False, "responseData":{}, "responseCode":"01", "statusCode": 422}, 422
-api.add_resource(SearchAProduct, '/api/v1/ecommerce/product/search')
+api.add_resource(SearchAProduct, '/api/v1/ecommerce/products/search')
 
 #api route for retrieving Popular Products
 class GetAllProducts(Resource):
@@ -46,7 +46,7 @@ class GetAllProducts(Resource):
                 return {"status": True, "responseMessage": f"All products retrieved successfully.", "Count":len(all_product), "responseData":all_product, "responseCode":"00", "statusCode": 200}, 200
         except Exception as e:
             return {"responseMessage":f"An exception occurred: {e}", "status":False, "responseData":{}, "responseCode":"01", "statusCode": 422}, 422
-api.add_resource(GetAllProducts, '/api/v1/ecommerce/product/popular')
+api.add_resource(GetAllProducts, '/api/v1/ecommerce/products/get')
 
 #api route for retrieving a Product details using product_name
 class GetAProductsDetails(Resource):
@@ -62,4 +62,4 @@ class GetAProductsDetails(Resource):
                 return {"status": True, "responseMessage": f"Details for product with Id {product_name} retrieved successfully.", "responseData":product, "responseCode":"00", "statusCode": 200}, 200
         except Exception as e:
             return {"message":f"An exception occurred: {e}", "status":False}, 422
-api.add_resource(GetAProductsDetails, '/api/v1/ecommerce/product/detail/<string:product_name>')
+api.add_resource(GetAProductsDetails, '/api/v1/ecommerce/products/detail/<string:product_name>')

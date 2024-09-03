@@ -54,4 +54,4 @@ class Checkout(Resource):
 
         except Exception as e:
             return {"responseMessage":f"An exception occurred: {e}", "status":False, "responseData":"", "responseCode":"01", "statusCode": 422}, 422
-api.add_resource(Checkout, '/api/v1/ecommerce/user/signin')
+api.add_resource(Checkout, '/api/v1/ecommerce/order/checkout')
