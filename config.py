@@ -7,10 +7,9 @@ load_dotenv(os.path.join(basedir, '.env'))
 
 # creating a configuration class
 class Config(object):
-    
     MONGO_URI =  os.environ.get('MONGO_URI') 
-    BASE_URL = os.environ.get('BASE_URL')
-    APP_ENVIRONMENT = os.environ["APP_ENVIRONMENT"]
+    #BASE_URL = os.environ.get('BASE_URL')
+    APP_ENV = os.environ["APP_ENVIRONMENT"]
     API_KEY = os.environ["API_KEY"]
     JWT_SECRET_KEY = os.environ.get('JWT_SECRET_KEY')
     JWT_ACCESS_TOKEN_EXPIRES = timedelta(hours=2)

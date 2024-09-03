@@ -11,15 +11,15 @@ from flask_jwt_extended import create_access_token, create_refresh_token, get_jw
 users = mongo.db.Users #User details
 products = mongo.db.Products #Products collection
 orders = mongo.db.Orders #Created orders
-cart = mongo.db.Cart #User's carts
-jwt_blacklist = mongo.db.JWT_Blacklist #Revoked jwts
+#cart = mongo.db.Cart #User's carts
+#jwt_blacklist = mongo.db.JWT_Blacklist #Revoked jwts
 
 
-@jwt.token_in_blocklist_loader
-def check_if_token_in_blacklist(jwt_header, jwt_payload):
-    jti = jwt_payload['jti']
-    token = jwt_blacklist.find_one({"jti": jti})
-    return token is not None
+# @jwt.token_in_blocklist_loader
+# def check_if_token_in_blacklist(jwt_header, jwt_payload):
+#     jti = jwt_payload['jti']
+#     token = jwt_blacklist.find_one({"jti": jti})
+#     return token is not None
 
 #Nigerian time
 def stamp():

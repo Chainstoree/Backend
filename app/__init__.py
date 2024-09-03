@@ -16,9 +16,11 @@ app = Flask(__name__, static_folder='static', template_folder='templates')
 app.config.from_object(Config)
 CORS(app)
 api = Api(app)
-mongo = PyMongo(app=app, uri=Config.MONGO_URI)
-
 #jwt setup
 jwt = JWTManager(app)
+
+mongo = PyMongo(app=app, uri=Config.MONGO_URI)
+
+
 
 from app import endpoints
