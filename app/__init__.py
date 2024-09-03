@@ -5,6 +5,7 @@ from config import Config
 from flask_pymongo import PyMongo
 from flask_restful import Api
 from flask_cors import CORS
+from flask_jwt_extended import JWTManager
 
 
 basedir = os.path.abspath(os.path.dirname(__file__))
@@ -16,5 +17,8 @@ app.config.from_object(Config)
 CORS(app)
 api = Api(app)
 mongo = PyMongo(app=app, uri=Config.MONGO_URI)
+
+#jwt setup
+jwt = JWTManager(app)
 
 from app import endpoints
