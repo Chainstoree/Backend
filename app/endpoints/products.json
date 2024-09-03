@@ -1,5 +1,6 @@
-{"Products":[ {"product_name":"", "product_id":"001", "image":"", "price":0.0},{"product_name":"", "product_id":"002", "image":"", "price":0.0},
-{"product_name":"", "product_id":"003", "image":"", "price":0.0},
-{"product_name":"", "product_id":"004", "image":"", "price":0.0},
-{"product_name":"", "product_id":"005", "image":"", "price":0.0},
-{"product_name":"", "product_id":"006", "image":"", "price":0.0}]}
+{"Products":[ {"product_name":"Iphone 14 pro max", "product_id":"001", "image":"",
+ "price":0.00074},{"product_name":"Black watch", "product_id":"002", "image":"", "price":0.00053},
+{"product_name":"Samsung curved monitor", "product_id":"003", "image":"", "price":0.00094},
+{"product_name":"SMART - Clear Anti-Blue Light", "product_id":"004", "image":"", "price":0.0069},
+{"product_name":"Alienware M15 R6 Laptop", "product_id":"005", "image":"", "price":0.00018},
+{"product_name":"Starlink", "product_id":"006", "image":"", "price":0.00093}]}

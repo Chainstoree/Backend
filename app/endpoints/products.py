@@ -39,9 +39,24 @@ class GetAllProducts(Resource):
             all_product = list(products.find({},{"_id":0}))
             
             if all_product == []:
-                return {"status": False, "responseMessage": "No records yet", "responseData":"", "responseCode":"01", "statusCode": 404}, 404
+                return {"status": False, "responseMessage": "No records yet", "responseData":{}, "responseCode":"01", "statusCode": 404}, 404
             else:
                 return {"status": True, "responseMessage": f"All products retrieved successfully.", "Count":len(all_product), "responseData":all_product, "responseCode":"00", "statusCode": 200}, 200
         except Exception as e:
             return {"responseMessage":f"An exception occurred: {e}", "status":False, "responseData":{}, "responseCode":"01", "statusCode": 422}, 422
 api.add_resource(GetAllProducts, '/api/v1/ecommerce/product/popular')
+
+#api route for retrieving a Product details using product_name
+class GetAProductsDetails(Resource):
+    #@token_required
+    def get(self, product_name):
+        try:
+            
+            product = products.find_one({"product_name":product_name},{"_id":0})
+            if not product:
+                return {"status": False, "responseMessage": f"No record for product {product_name}", "responseData":{}, "responseCode":"01", "statusCode": 404}, 404
+            else:
+                return {"status": True, "responseMessage": f"Details for product with Id {product_name} retrieved successfully.", "responseData":product, "responseCode":"00", "statusCode": 200}, 200
+        except Exception as e:
+            return {"message":f"An exception occurred: {e}", "status":False}, 422
+api.add_resource(GetAProductsDetails, '/api/v1/ecommerce/product/detail/<string:product_name>')
