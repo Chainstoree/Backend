@@ -1,6 +1,6 @@
-{"Products":[ {"product_name":"Iphone 14 pro max", "product_id":"001", "image":"",
- "price":0.00074},{"product_name":"Black watch", "product_id":"002", "image":"", "price":0.00053},
-{"product_name":"Samsung curved monitor", "product_id":"003", "image":"", "price":0.00094},
-{"product_name":"SMART - Clear Anti-Blue Light", "product_id":"004", "image":"", "price":0.0069},
-{"product_name":"Alienware M15 R6 Laptop", "product_id":"005", "image":"", "price":0.00018},
-{"product_name":"Starlink", "product_id":"006", "image":"", "price":0.00093}]}
+{"Products":[ {"product_name":"Iphone 14 pro max", "product_id":"001", "image":"https://drive.google.com/file/d/1HYtdEODCAq0tMbexzZlYfoEj2yr5ocow/view?usp=sharing",
+ "price":0.00074},{"product_name":"Black watch", "product_id":"002", "image":"https://drive.google.com/file/d/1Xw6uwwB6W6JcyLF2YqRC7DMmPxuhgJL7/view?usp=sharing", "price":0.00053},
+{"product_name":"Samsung curved monitor", "product_id":"003", "image":"https://drive.google.com/file/d/1gc4MTJHN3EMSAB9fzQ_schtUmL7xOu4p/view?usp=drive_link", "price":0.00094},
+{"product_name":"SMART - Clear Anti-Blue Light", "product_id":"004", "image":"https://drive.google.com/file/d/19viiymcBAt0EqB3yqkyND6nJRhjRQQ53/view?usp=sharing", "price":0.0019},
+{"product_name":"Alienware M15 R6 Laptop", "product_id":"005", "image":"https://drive.google.com/file/d/1MqHbVY-B0MSbFTyEyCO3j7d8J9og0bkT/view?usp=sharing", "price":0.00018},
+{"product_name":"Starlink", "product_id":"006", "image":"https://drive.google.com/file/d/1tLE4igN7ldP9DCjshpwWdfyFDY9FZ_Vx/view?usp=sharing", "price":0.00093}]}

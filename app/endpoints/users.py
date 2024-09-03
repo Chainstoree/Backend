@@ -17,7 +17,7 @@ class SigninUser(Resource):
                     type=str,required=True,
                     help="Enter wallet address. field cannot be left blank")
     
-    
+    @token_required
     def post(self):
         try:
             data = SigninUser.parser.parse_args()
@@ -44,11 +44,11 @@ class SigninUser(Resource):
                 #creating jwt
                 access_token = create_access_token(identity=user.get("wallet_address"), fresh=True)
                 refresh_token = create_refresh_token(identity=user.get("wallet_address"))
-                return {"status": True, "responseMessage": "Sign in successful!",  "accessToken":access_token, "refreshToken":refresh_token, "responseData":{}, "responseCode":"00", "statusCode": 200}, 200
+                return {"status": True, "responseMessage": "Sign in successful!",  "accessToken":access_token, "refreshToken":refresh_token, "responseData":user, "responseCode":"00", "statusCode": 200}, 200
             else:
                 access_token = create_access_token(identity=get_user.get("wallet_address"), fresh=True)
                 refresh_token = create_refresh_token(identity=get_user.get("wallet_address"))
-                return {"status": True, "responseMessage": "Sign in successful!",  "accessToken":access_token, "refreshToken":refresh_token, "responseData":{}, "responseCode":"00", "statusCode": 200}, 200
+                return {"status": True, "responseMessage": "Sign in successful!",  "accessToken":access_token, "refreshToken":refresh_token, "responseData":get_user, "responseCode":"00", "statusCode": 200}, 200
 
 
         except Exception as e:
@@ -95,7 +95,7 @@ api.add_resource(SigninUser, '/api/v1/ecommerce/user/signin')
 # api.add_resource(LoginUser, '/api/v1/ecommerce/user/login')
 
 class LogoutUser(Resource):
-
+    @token_required
     @jwt_required()
     def post(self):
         try:

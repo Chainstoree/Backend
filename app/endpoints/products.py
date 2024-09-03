@@ -10,7 +10,8 @@ class SearchAProduct(Resource):
                     required=True, 
                     help="Enter Search term. field cannot be left blank")
     
-    #@token_required
+    @token_required
+    @jwt_required
     def post(self):
         try:
 
@@ -32,7 +33,8 @@ api.add_resource(SearchAProduct, '/api/v1/ecommerce/product/search')
 
 #api route for retrieving Popular Products
 class GetAllProducts(Resource):
-    #@token_required
+    @token_required
+    @jwt_required
     def get(self):
         try:
             
@@ -48,7 +50,8 @@ api.add_resource(GetAllProducts, '/api/v1/ecommerce/product/popular')
 
 #api route for retrieving a Product details using product_name
 class GetAProductsDetails(Resource):
-    #@token_required
+    @token_required
+    @jwt_required
     def get(self, product_name):
         try:
             
