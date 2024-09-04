@@ -35,9 +35,10 @@ class Checkout(Resource):
             
             product_details = products.find_one({"product_id":product_id}, {"_id":0})
 
-            if product_details:    
+            if product_details:   
+                order_id =  str(randint(10000, 99999))
                 order = {
-                    "order_id": str(randint(10000, 99999)),
+                    "order_id": order_id,
                     "wallet_address": wallet_address,
                     "product_details": product_details,
                     "quantity": data.get("quantity"),
@@ -46,7 +47,7 @@ class Checkout(Resource):
                     }
                 #Post details to database
                 orders.insert_one(order)
-                order = orders.find_one({"wallet_address":wallet_address}, {"_id":0})
+                #order = orders.find_one({"order_id":order_id}, {"_id":0})
                 return {"status": True, "responseMessage": "Checkout successful", "responseData":order, "responseCode":"00", "statusCode": 200}, 200
             else:
                 
@@ -72,4 +73,4 @@ class GetOrders(Resource):
                 return {"status": True, "responseMessage": f"All orders retrieved successfully.", "Count":len(all_orders), "responseData":all_orders, "responseCode":"00", "statusCode": 200}, 200
         except Exception as e:
             return {"responseMessage":f"An exception occurred: {e}", "status":False, "responseData":{}, "responseCode":"01", "statusCode": 422}, 422
-api.add_resource(GetOrders, '/api/v1/ecommerce/orders/get/<string:wallet_address>')
+api.add_resource(GetOrders, '/api/v1/ecommerce/order/get/<string:wallet_address>')
