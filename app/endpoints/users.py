@@ -106,3 +106,25 @@ api.add_resource(SigninUser, '/api/v1/ecommerce/user/signin')
 #         except Exception as e:
 #             return {"responseMessage":f"An exception occurred: {e}", "status":False, "responseData":"", "responseCode":"01", "statusCode": 422}, 422
 # api.add_resource(LogoutUser, '/api/v1/ecommerce/user/logout')
+
+class GetUser(Resource):
+    parser = reqparse.RequestParser()
+
+    parser.add_argument('wallet_address', 
+                    type=str,required=True,
+                    help="Enter wallet address. field cannot be left blank")
+    
+    #@token_required
+    #@jwt_required
+    def get(self):
+        try:
+            data = GetUser.parser.parse_args()
+            user = users.find_one({"wallet_address": data.get("wallet_address")},{"_id":0})
+            
+            if not user:
+                return {"status": False, "responseMessage": "No user found", "responseData":{}, "responseCode":"01", "statusCode": 404}, 404
+            else:
+                return {"status": True, "responseMessage": f"User details retrieved successfully.", "responseData":user, "responseCode":"00", "statusCode": 200}, 200
+        except Exception as e:
+            return {"responseMessage":f"An exception occurred: {e}", "status":False, "responseData":{}, "responseCode":"01", "statusCode": 422}, 422
+api.add_resource(GetUser, '/api/v1/ecommerce/user/get')

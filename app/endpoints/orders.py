@@ -55,3 +55,20 @@ class Checkout(Resource):
         except Exception as e:
             return {"responseMessage":f"An exception occurred: {e}", "status":False, "responseData":"", "responseCode":"01", "statusCode": 422}, 422
 api.add_resource(Checkout, '/api/v1/ecommerce/order/checkout')
+
+
+class GetOrders(Resource):
+    #@token_required
+    #@jwt_required
+    def get(self, wallet_address):
+        try:
+            
+            all_orders = list(orders.find({"wallet_address": wallet_address},{"_id":0}))
+            
+            if all_orders == []:
+                return {"status": False, "responseMessage": "No orders yet", "responseData":{}, "responseCode":"01", "statusCode": 404}, 404
+            else:
+                return {"status": True, "responseMessage": f"All orders retrieved successfully.", "Count":len(all_orders), "responseData":all_orders, "responseCode":"00", "statusCode": 200}, 200
+        except Exception as e:
+            return {"responseMessage":f"An exception occurred: {e}", "status":False, "responseData":{}, "responseCode":"01", "statusCode": 422}, 422
+api.add_resource(GetOrders, '/api/v1/ecommerce/orders/get/<string:wallet_address>')
