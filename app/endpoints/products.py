@@ -17,7 +17,9 @@ class SearchAProduct(Resource):
 
             data = SearchAProduct.parser.parse_args()
             search_term = data.get("search_term").lower().strip()
-            
+
+            #creating search index on all product fields
+            products.create_index([("$**", "text")])            
         
             # Perform the search
             results = list(products.find({"$text": {"$search": f"{search_term}"}},{"_id":0}))
