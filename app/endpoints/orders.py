@@ -46,7 +46,7 @@ class Checkout(Resource):
                     }
                 #Post details to database
                 orders.insert_one(order)
-                return {"status": True, "responseMessage": "Checkout successful", "responseData":order, "responseCode":"00", "statusCode": 200}, 200
+                return {"status": True, "responseMessage": "Checkout successful", "responseData":{}, "responseCode":"00", "statusCode": 200}, 200
             else:
                 
                 return {"status": False, "responseMessage": f"No product found with id {product_id}", "responseData":{}, "responseCode":"01", "statusCode": 404}, 404
